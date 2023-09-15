@@ -21,6 +21,14 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
 
     Route::group(['middleware' => 'jwt.auth'], function () {
 
+        Route::group(["namespace" => "App\Http\Controllers\Post", "prefix" => "posts"], function (){
+            Route::get('/', 'IndexController');
+            Route::get('/create', 'CreateController');
+            Route::post('/', 'StoreController');
+            Route::patch('/{post}', 'UpdateController');
+            Route::delete('/{post}', 'DestroyController');
+        });
+
         Route::group(["namespace" => "App\Http\Controllers\User", "prefix" => "users"], function (){
             Route::get('/', 'IndexController');
             Route::patch('/{user}', 'UpdateController');
