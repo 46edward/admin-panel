@@ -24,6 +24,16 @@ const router = createRouter({
             name: 'user.index'
         },
         {
+            path: '/posts',
+            component: () => import('./components/Posts/Index.vue'),
+            name: 'posts.index'
+        },
+        {
+            path: '/posts/create',
+            component: () => import('./components/Posts/Create.vue'),
+            name: 'posts.create'
+        },
+        {
             path: '/:catchAll(.*)',
             component: () => import('./components/404.vue'),
             name: 'error.404'
